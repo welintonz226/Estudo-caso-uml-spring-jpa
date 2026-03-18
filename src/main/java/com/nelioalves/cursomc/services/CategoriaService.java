@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.nelioalves.cursomc.entities.Categoria;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
+import com.nelioalves.cursomc.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -21,7 +22,7 @@ public class CategoriaService {
 	
 	public Categoria findById(Long id) {
 		Optional<Categoria> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 }

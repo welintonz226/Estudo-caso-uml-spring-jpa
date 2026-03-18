@@ -7,6 +7,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private Double preco;
 	
+	@JsonIgnore
 	@ManyToAny
 	@JoinTable(name = "tb_produto_categoria",
 		joinColumns = @JoinColumn(name = "produto_id"),
