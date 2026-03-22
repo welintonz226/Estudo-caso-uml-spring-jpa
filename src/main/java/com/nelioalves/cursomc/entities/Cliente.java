@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nelioalves.cursomc.entities.enums.TipoCliente;
 
 import jakarta.persistence.CollectionTable;
@@ -41,6 +40,9 @@ public class Cliente implements Serializable{
 	@ElementCollection
 	@CollectionTable(name = "Telefone")
 	private Set<String> telefones = new HashSet<>();
+	
+	
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente(){
 	}
@@ -100,6 +102,10 @@ public class Cliente implements Serializable{
 
 	public Set<String> getTelefones() {
 		return telefones;
+	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
 	@Override
