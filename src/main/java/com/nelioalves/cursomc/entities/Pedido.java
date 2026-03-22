@@ -2,9 +2,7 @@ package com.nelioalves.cursomc.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -13,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -28,13 +28,12 @@ public class Pedido implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
 	private Instant instant;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	
-	private Set<Produto> itens = new HashSet<>();
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
 	
 	@OneToOne(cascade = CascadeType.ALL,mappedBy = "pedido")
@@ -43,13 +42,12 @@ public class Pedido implements Serializable{
 	public Pedido() {
 	}
 
-	public Pedido(Long id, Instant instant, Cliente cliente, Endereco enderecoDeEntrega, Pagamento pagamento) {
+	public Pedido(Long id, Instant instant, Cliente cliente, Endereco enderecoDeEntrega) {
 		super();
 		this.id = id;
 		this.instant = instant;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
-		this.pagamento = pagamento;
 	}
 
 	public Long getId() {
@@ -92,9 +90,6 @@ public class Pedido implements Serializable{
 		this.pagamento = pagamento;
 	}
 
-	public Set<Produto> getItens() {
-		return itens;
-	}
 
 	@Override
 	public int hashCode() {

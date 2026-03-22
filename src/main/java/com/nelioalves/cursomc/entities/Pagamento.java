@@ -3,13 +3,18 @@ package com.nelioalves.cursomc.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.nelioalves.cursomc.entities.enums.EstadoPagamento;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class  Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -26,10 +31,10 @@ public abstract class  Pagamento implements Serializable{
 	public Pagamento(){
 	}
 
-	public Pagamento(Long id, Integer estado, Pedido pedido) {
+	public Pagamento(Long id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = estado;
+		this.estado = estado.getCod();
 		this.pedido = pedido;
 	}
 
@@ -41,12 +46,12 @@ public abstract class  Pagamento implements Serializable{
 		this.id = id;
 	}
 
-	public Integer getEstado() {
-		return estado;
+	public EstadoPagamento getEstado() {
+		return EstadoPagamento.toEnum(estado);
 	}
 
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	public void setEstado(EstadoPagamento estado) {
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {

@@ -1,5 +1,10 @@
 package com.nelioalves.cursomc.entities;
 
+import com.nelioalves.cursomc.entities.enums.EstadoPagamento;
+
+import jakarta.persistence.Entity;
+
+@Entity
 public class PagamentoComCartao extends Pagamento{
 	private static final long serialVersionUID = 1L;
 	
@@ -9,7 +14,7 @@ public class PagamentoComCartao extends Pagamento{
 	public PagamentoComCartao() {
 	}
 
-	public PagamentoComCartao(Long id, Integer estado, Pedido pedido, Integer numeroDeParcelas) {
+	public PagamentoComCartao(Long id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
 		this.numeroDeParcelas = numeroDeParcelas;
 	}

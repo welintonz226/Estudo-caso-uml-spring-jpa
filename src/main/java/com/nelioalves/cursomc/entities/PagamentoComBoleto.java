@@ -2,6 +2,11 @@ package com.nelioalves.cursomc.entities;
 
 import java.time.LocalDate;
 
+import com.nelioalves.cursomc.entities.enums.EstadoPagamento;
+
+import jakarta.persistence.Entity;
+
+@Entity
 public class PagamentoComBoleto extends Pagamento{
 	private static final long serialVersionUID = 1L;
 	
@@ -11,7 +16,7 @@ public class PagamentoComBoleto extends Pagamento{
 	public PagamentoComBoleto() {
 	}
 
-	public PagamentoComBoleto(Long id, Integer estado, Pedido pedido, LocalDate dataVencimento,
+	public PagamentoComBoleto(Long id, EstadoPagamento estado, Pedido pedido, LocalDate dataVencimento,
 			LocalDate dataPagamento) {
 		super(id, estado, pedido);
 		this.dataVencimento = dataVencimento;
