@@ -2,7 +2,11 @@ package com.nelioalves.cursomc.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -13,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -39,6 +44,9 @@ public class Pedido implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL,mappedBy = "pedido")
 	private Pagamento pagamento;
 	
+	@OneToMany(mappedBy = "id.pedido")
+	private Set<ItemPedido> itens = new HashSet<>();
+	
 	public Pedido() {
 	}
 
@@ -48,6 +56,14 @@ public class Pedido implements Serializable{
 		this.instant = instant;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
+	}
+	
+	public List<Produto> getProduto(){
+		List<Produto> lista = new ArrayList<>();
+		for(ItemPedido x : itens) {
+			lista.add(x.getProduto());
+		}
+		return lista;
 	}
 
 	public Long getId() {
@@ -89,6 +105,14 @@ public class Pedido implements Serializable{
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
 	}
+	
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
 
 
 	@Override
@@ -107,7 +131,4 @@ public class Pedido implements Serializable{
 		Pedido other = (Pedido) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-
 }

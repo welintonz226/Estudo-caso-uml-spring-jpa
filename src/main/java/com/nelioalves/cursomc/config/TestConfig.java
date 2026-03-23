@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.format.datetime.standard.InstantFormatter;
 
 import com.nelioalves.cursomc.entities.Categoria;
 import com.nelioalves.cursomc.entities.Cidade;
 import com.nelioalves.cursomc.entities.Cliente;
 import com.nelioalves.cursomc.entities.Endereco;
 import com.nelioalves.cursomc.entities.Estado;
+import com.nelioalves.cursomc.entities.ItemPedido;
 import com.nelioalves.cursomc.entities.Pagamento;
 import com.nelioalves.cursomc.entities.PagamentoComBoleto;
 import com.nelioalves.cursomc.entities.PagamentoComCartao;
@@ -28,6 +28,7 @@ import com.nelioalves.cursomc.repositories.CidadeRepository;
 import com.nelioalves.cursomc.repositories.ClienteRepository;
 import com.nelioalves.cursomc.repositories.EnderecoRepository;
 import com.nelioalves.cursomc.repositories.EstadoRepository;
+import com.nelioalves.cursomc.repositories.ItemPedidoRepository;
 import com.nelioalves.cursomc.repositories.PagamentoRepository;
 import com.nelioalves.cursomc.repositories.PedidoRepository;
 import com.nelioalves.cursomc.repositories.ProdutoRepository;
@@ -59,7 +60,10 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	PagamentoRepository pagamentoRepository;
-
+	
+	@Autowired
+	ItemPedidoRepository itemPedidoRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -120,6 +124,20 @@ public class TestConfig implements CommandLineRunner {
 		//Add Orders Client
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 		
+		//Add ItemOrder
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		//ADD ItemOrder in Order
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		//Add ItemOrder in Product
+		p1.getItens().add(ip1);
+		p2.getItens().add(ip3);
+		p3.getItens().add(ip2);
+		
 		//Save Repository
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
@@ -129,7 +147,7 @@ public class TestConfig implements CommandLineRunner {
 		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagt1,pagt2));
-		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 
 }
