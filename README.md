@@ -36,14 +36,11 @@ End point                 Dados
 ## Instância do modelo conceitual
 ![Instância do modelo conecitual](Assets/DiagramaObjetos.png)
 
-## Teste 
-![Instância do modelo conecitual](Assets/DiagramaObjetos.png)
-
 ## Exemplo de teste de End point no Postman
 ![Teste no Postman](Assets/Teste-Postman.png)
 
 ## Base de dados no Banco de teste H2
-![Base de dados](Assets/Banco H2.png) 
+![Base de dados](Assets/BancoH2.png) 
 
 # Tecnologias utilizadas
 ## Back end
