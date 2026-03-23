@@ -47,7 +47,7 @@ em linguagem orientada a objetos dos tópicos aprendidos no curso, quais sejam:
 ## Back end
 - Java
 - Spring Boot
-- Spring data JPA / Hibernate
+- Spring Data JPA / Hibernate
 - Maven
 ## Testes
 - Postman
