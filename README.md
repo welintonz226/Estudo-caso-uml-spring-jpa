@@ -23,10 +23,10 @@ em linguagem orientada a objetos dos tópicos aprendidos no curso, quais sejam:
 - Associações direcionadas
 
 ## Modelo Conceitual
-!(Assets/DiagramaClasses.png)
+![Modelo Conceitual](Assets/DiagramaClasses.png)
 
 ## Instância do modelo conceitual
-!(Assets/DiagramaObjetos.png)
+![Instância do modelo conecitual](Assets/DiagramaObjetos.png)
 
 
 
