@@ -25,9 +25,9 @@ em linguagem orientada a objetos dos tópicos aprendidos no curso, quais sejam:
 2- Gerar uma base de dados relacional automaticamente a partir do modelo conceitual, bem como povoar a base com a instância dada.
 
 3- Recuperar os dados e disponibilizá-los por meio de uma API Rest BÁSICA. Os seguintes end points devem ser disponibilizados:
-End point                 Dados
-/categorias/{id}          Categoria e seus produtos
-/clientes/{id}            Cliente, seus telefones e seus endereços
+End point                 Dados<br>
+/categorias/{id}          Categoria e seus produtos<br>
+/clientes/{id}            Cliente, seus telefones e seus endereços<br>
 /pedidos/{id}             Pedido, seu cliente, seu pagamento, seus itens de pedido, seu endereço de entrega
 
 ## Modelo Conceitual
