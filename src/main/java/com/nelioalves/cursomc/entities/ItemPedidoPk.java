@@ -9,7 +9,6 @@ import jakarta.persistence.ManyToOne;
 
 @Embeddable
 public class ItemPedidoPk implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne

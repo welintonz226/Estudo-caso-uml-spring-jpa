@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nelioalves.cursomc.entities.Estado;
-import com.nelioalves.cursomc.services.EstadoService;
+import com.nelioalves.cursomc.entities.Pedido;
+import com.nelioalves.cursomc.services.PedidoService;
 
 @RestController
-@RequestMapping(value = "/estados")
-public class EstadoResource {
+@RequestMapping(value = "/pedidos")
+public class PedidoResource {
 	
 	@Autowired
-	EstadoService EstadoService;
+	PedidoService PedidoService;
 	
 	@GetMapping
-	public ResponseEntity<List<Estado>> findAll(){
-		List<Estado> list = EstadoService.findAll();
+	public ResponseEntity<List<Pedido>> findAll(){
+		List<Pedido> list = PedidoService.findAll();
 		return ResponseEntity.ok(list);
 	}
 	
 	@GetMapping(value = "{id}")
-	public ResponseEntity<Estado> findById(@PathVariable Long id) {
-		Estado obj = EstadoService.findById(id);
+	public ResponseEntity<Pedido> findById(@PathVariable Long id) {
+		Pedido obj = PedidoService.findById(id);
 		return ResponseEntity.ok(obj);
 	}
 }

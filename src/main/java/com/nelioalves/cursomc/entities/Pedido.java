@@ -2,9 +2,7 @@ package com.nelioalves.cursomc.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,7 +28,7 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd' 'HH:mm",timezone = "GMT")
 	private Instant instant;
 	
 	@ManyToOne
@@ -56,14 +54,6 @@ public class Pedido implements Serializable{
 		this.instant = instant;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
-	}
-	
-	public List<Produto> getProduto(){
-		List<Produto> lista = new ArrayList<>();
-		for(ItemPedido x : itens) {
-			lista.add(x.getProduto());
-		}
-		return lista;
 	}
 
 	public Long getId() {
