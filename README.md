@@ -65,7 +65,7 @@ git clone https://github.com/welintonz226/Estudo-caso-uml-spring-jpa.git
 # entrar na pasta do projeto
 
 # executar o projeto
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 # Agradecimentos
 Professor Nélio Alves
