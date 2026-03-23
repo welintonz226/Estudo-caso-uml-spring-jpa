@@ -26,7 +26,7 @@ em linguagem orientada a objetos dos tópicos aprendidos no curso, quais sejam:
 
 3- Recuperar os dados e disponibilizá-los por meio de uma API Rest BÁSICA. Os seguintes end points devem ser disponibilizados:
 | End point | Dados |
-| :---: | :---: |
+| :--- | :--- |
 | /categorias/{id} | Categoria e seus produtos |
 | /clientes/{id} | Cliente, seus telefones e seus endereços |
 | /pedidos/{id} | Pedido, seu cliente, seu pagamento, seus itens de pedido, seu endereço de entrega |
