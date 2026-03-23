@@ -22,5 +22,7 @@ em linguagem orientada a objetos dos tópicos aprendidos no curso, quais sejam:
 - Entidades fracas (ElementCollection)
 - Associações direcionadas
 
-  ## Layout mobile
-![Mobile 1](https://github.com/acenelio/assets/raw/main/sds1/mobile1.png) ![Mobile 2](https://github.com/acenelio/assets/raw/main/sds1/mobile2.png)
+## Modelo Conceitual
+![Modelo Conceitual](Assets/DiagramaClasses.png)
+
+
